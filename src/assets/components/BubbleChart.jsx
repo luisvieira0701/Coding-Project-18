@@ -1,5 +1,5 @@
 import React from 'react';
-import ChartComponent from './ChartComponent.jsx';
+import ChartComponent from './chartComponent.jsx';
 
 const BubbleChart = ({ data }) => {
   const chartData = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import ChartComponent from './ChartComponent';
+import ChartComponent from './chartComponent.jsx';
 
 const BarChart = ({ data }) => {
   const chartData = {
