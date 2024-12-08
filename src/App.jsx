@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import BarChart from './assets/components/chartComponent.jsx'
+import ChartComponent from './assets/components/ChartComponent.jsx';
+import BarChart from './assets/components/BarChart.jsx' 
 import './App.css'
 
 function App() {

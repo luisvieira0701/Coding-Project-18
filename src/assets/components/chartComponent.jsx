@@ -1,30 +1,26 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { Chart } from 'chart.js';
 
-const ChartComponent = ({type, data, options}) => {
-    const chartRef = useRef(null);
+const ChartComponent = ({ type, data, options }) => {
+  const chartRef = React.createRef();
 
-    useEffect(() => {
-        // Initialize chart on mount
-        const chart = new window[type](chartRef.current, options) 
-        chart.data = data;
-        
+  React.useEffect(() => {
+    const chart = new Chart(chartRef.current, {
+      type: type,
+      data: data,
+      options: options
+    });
 
-        // Update chart on data change
-        const updateChart = () => {
-            chart.data = data;
-            chart.update();
-        };
+    return () => {
+      chart.destroy();
+    };
+  }, [type, data, options]);
 
-        // Clean up chart on unmount
-        return () => {
-            chart.destroy();
-        };
-    }, [type, data, options]);
- 
-    return (
-        <div ref={chartRef} style={{width: '100%', height: '100%'}} />
-    );
+  return (
+    <div>
+      <canvas ref={chartRef} />
+    </div>
+  );
 };
 
 export default ChartComponent;
-
